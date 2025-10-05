@@ -84,9 +84,12 @@ public class Gui extends JFrame {
 					txtfAdicionar.setText("");
 				}
 				catch (NumberFormatException e1) {
+					
 					JOptionPane.showMessageDialog(null,
-							"Error:  no es un número válido.",
+							"Error: " + txtfAdicionar.getText()
+									+ " no es un número válido.",
 							"Error de formato", JOptionPane.ERROR_MESSAGE);
+					txtfAdicionar.setText("");
 				}
 			}
 
