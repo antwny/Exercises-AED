@@ -11,7 +11,7 @@ public class ArregloTemperaturas {
 		indice = 0;
 	}
 
-	public int tamaño() {
+	public int tamaÃ±o() {
 		return indice;
 	}
 
@@ -45,7 +45,7 @@ public class ArregloTemperaturas {
 
 	public double temperaturaMenor() {
 		double menor = temperatura[0];
-		for (int i = 0; i < tamaño(); i++) {
+		for (int i = 0; i < tamaÃ±o(); i++) {
 			if (temperatura[i] < menor) {
 				menor = temperatura[i];
 			}
@@ -54,7 +54,7 @@ public class ArregloTemperaturas {
 	}
 
 	public int buscarPrimeraTemperaturaNormal() {
-		for (int i = 0; i < tamaño(); i++) {
+		for (int i = 0; i < tamaÃ±o(); i++) {
 			if (temperatura[i] > 36.1 && temperatura[i] < 37.2) {
 				return i;
 			}
@@ -63,14 +63,14 @@ public class ArregloTemperaturas {
 	}
 
 	public void remplazarPrimeraTemperaturaNormal() {
-		if (tamaño() != 0) {
+		if (tamaÃ±o() != 0) {
 			temperatura[buscarPrimeraTemperaturaNormal()] = temperaturaMenor();
 		}
 	}
 
 	public void incrementarTemperaturas() {
 
-		for (int i = 0; i < tamaño(); i++) {
+		for (int i = 0; i < tamaÃ±o(); i++) {
 			temperatura[i] = temperatura[i] + 0.2;
 
 		}

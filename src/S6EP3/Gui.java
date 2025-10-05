@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -63,7 +64,8 @@ public class Gui extends JFrame {
 		elimTodo.setBounds(5, 45, 227, 23);
 		contentPane.add(elimTodo);
 
-		JButton reemplazar = new JButton("Remplazar primera temperatura normal");
+		JButton reemplazar = new JButton(
+				"Remplazar primera temperatura normal");
 		reemplazar.setHorizontalAlignment(SwingConstants.LEFT);
 		reemplazar.setBounds(5, 81, 228, 23);
 		contentPane.add(reemplazar);
@@ -76,9 +78,16 @@ public class Gui extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				at.adicionar(Integer.parseInt(txtfAdicionar.getText()));
-				listar();
-				txtfAdicionar.setText("");
+				try {
+					at.adicionar(Integer.parseInt(txtfAdicionar.getText()));
+					listar();
+					txtfAdicionar.setText("");
+				}
+				catch (NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null,
+							"Error:  no es un número válido.",
+							"Error de formato", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 
 		});
@@ -116,7 +125,8 @@ public class Gui extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (at.tamaño() == 0) {
 					listar();
-				} else {
+				}
+				else {
 					at.incrementarTemperaturas();
 					listar();
 				}
@@ -131,7 +141,8 @@ public class Gui extends JFrame {
 
 		if (at.tamaño() == 0) {
 			txta.setText("Todo Limpio");
-		} else {
+		}
+		else {
 			for (int i = 0; i < at.tamaño(); i++) {
 				if (at.obtener(i) != 0)
 					txta.append(df.format(at.obtener(i)) + " °C" + "\n");
@@ -145,7 +156,8 @@ public class Gui extends JFrame {
 				try {
 					Gui frame = new Gui();
 					frame.setVisible(true);
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
